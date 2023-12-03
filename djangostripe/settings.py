@@ -138,7 +138,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51OIaRiLKB0O42ESrDRGxp4ox4uWETakJxSKBpP7eIKuRXyl98gVjiCMdYaYhiDrIQicR2vfRVLtiTwyr8FQXvks800CBYd0Mmq'
 STRIPE_SECRET_KEY = 'sk_test_51OIaRiLKB0O42ESr4yBJZ0iUew4KEZjemOWYwkUJWBZLwu6uYNPAH9FpyMZpUg42PtzietRtiy4y4Hkpw5AdfLks00NcOnHikq'
-STATIC_ROOT = '/home/dilbazi/test_task/test_task/djangostripe/static'
+STATIC_ROOT = '/home/dilbazi/test_task/test_task/static'
 STATIC_URL = '/static/'
 
 # for django >= 3.1
