@@ -11,16 +11,28 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import environ
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY= env('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY= env('STRIPE_SECRET_KEY')
+PRODUCT_KEY= env('PRODUCT_KEY')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-j-p#_k^d-&^2605xx@s8&^u#6ndpj8mrw*7_7plboe_)6&84+n"
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -136,14 +148,11 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51OIaRiLKB0O42ESrDRGxp4ox4uWETakJxSKBpP7eIKuRXyl98gVjiCMdYaYhiDrIQicR2vfRVLtiTwyr8FQXvks800CBYd0Mmq'
-STRIPE_SECRET_KEY = 'sk_test_51OIaRiLKB0O42ESr4yBJZ0iUew4KEZjemOWYwkUJWBZLwu6uYNPAH9FpyMZpUg42PtzietRtiy4y4Hkpw5AdfLks00NcOnHikq'
+
 STATIC_ROOT = '/home/dilbazi/test_task/test_task/static'
 STATIC_URL = '/static/'
-
 # for django >= 3.1
-STATICFILES_DIRS = [BASE_DIR / 'static']  # new
-PRODUCT_KEY='price_1OIbDcLKB0O42ESrngPfLzel'
+STATICFILES_DIRS =( os.path.join(BASE_DIR, 'static'),)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
